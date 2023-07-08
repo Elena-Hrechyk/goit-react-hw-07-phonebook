@@ -1,16 +1,27 @@
+import { useSelector } from 'react-redux';
+import { getContacts } from 'redux/selector';
+import { FormContact } from './Form/Form';
+import { Filter } from './Filter/Filter';
+import { ContactList } from './Contacts/ContactList';
+import { Title, TextTitle } from './App.styled';
+
 export const App = () => {
+  const contacts = useSelector(getContacts);
+
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <Title>Phonebook</Title>
+      <FormContact />
+
+      {!contacts.length ? (
+        <TextTitle>No saved contacts</TextTitle>
+      ) : (
+        <>
+          <TextTitle>Contacts</TextTitle>
+          <Filter />
+          <ContactList />
+        </>
+      )}
+    </>
   );
 };
