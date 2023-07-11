@@ -22,16 +22,17 @@ export const App = () => {
     <>
       <Title>Phonebook</Title>
       <FormContact />
-      {!contacts.length ? (
-        <TextTitle>No saved contacts</TextTitle>
-      ) : (
+      {loading && !error && <Loader />}
+      {contacts.length > 0 ? (
         <>
           <TextTitle>Contacts</TextTitle>
           <Filter />
           <ContactList />
         </>
+      ) : (
+        <TextTitle>No saved contacts</TextTitle>
       )}
-      {loading && !error && <Loader />}
+
       {error && <ErroTitle>{error}</ErroTitle>}
     </>
   );
