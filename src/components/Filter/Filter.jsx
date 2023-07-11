@@ -8,7 +8,7 @@ export const Filter = () => {
 
   const handleFilter = evt => {
     const value = evt.target.value.toLowerCase().trim();
-    console.log(value);
+
     dispatch(filterContacts(value));
   };
 

@@ -11,3 +11,11 @@ export const TextTitle = styled.p`
   font-size: 18px;
   font-weight: 700;
 `;
+
+export const ErroTitle = styled.h3`
+  margin-top: 20px;
+  margin-left: 40px;
+  font-size: 18px;
+  font-weight: 700;
+  color: red;
+`;

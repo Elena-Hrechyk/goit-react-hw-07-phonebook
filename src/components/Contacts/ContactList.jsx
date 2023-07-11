@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import { getContacts } from 'redux/selector';
 import { getFilter } from 'redux/selector';
 import {
@@ -14,6 +14,7 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const visibleContacts = getVisibleContacts(contacts, filter);
+  console.log(contacts);
 
   return (
     <>
@@ -22,7 +23,7 @@ export const ContactList = () => {
           return (
             <ItemContact key={item.id}>
               <InfoContact>
-                {item.username}: {item.number}
+                {item.name}: {item.phone}
               </InfoContact>
               <BtnDelContact
                 type="button"
@@ -40,6 +41,6 @@ export const ContactList = () => {
 
 function getVisibleContacts(contacts, filter) {
   return contacts.filter(contact =>
-    contact.username.toLowerCase().includes(filter)
+    contact.name.toLowerCase().includes(filter)
   );
 }
