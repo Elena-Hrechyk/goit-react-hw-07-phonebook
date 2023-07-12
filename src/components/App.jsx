@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getContacts, getIsLoading, getError } from 'redux/selector';
+import { selectContacts, selectIsLoading, selectError } from 'redux/selector';
 import { fetchContacts } from 'redux/operations';
 import { FormContact } from './Form/Form';
 import { Filter } from './Filter/Filter';
@@ -10,9 +10,9 @@ import { Title, TextTitle, ErroTitle } from './App.styled';
 
 export const App = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const loading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const contacts = useSelector(selectContacts);
+  const loading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());

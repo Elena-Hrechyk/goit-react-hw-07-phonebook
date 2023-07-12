@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/operations';
-import { getContacts } from 'redux/selector';
-import { getFilter } from 'redux/selector';
+import { selectVisibleContacts } from 'redux/selector';
 import {
   List,
   ItemContact,
@@ -11,10 +10,7 @@ import {
 
 export const ContactList = () => {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
-  const filter = useSelector(getFilter);
-  const visibleContacts = getVisibleContacts(contacts, filter);
-
+  const visibleContacts = useSelector(selectVisibleContacts);
 
   return (
     <>
@@ -39,8 +35,3 @@ export const ContactList = () => {
   );
 };
 
-function getVisibleContacts(contacts, filter) {
-  return contacts.filter(contact =>
-    contact.name.toLowerCase().includes(filter)
-  );
-}
